@@ -1,0 +1,44 @@
+{
+    "plenaryErpApp": {
+        "transport" : {
+            "home": {
+                "title": "Transports",
+                "createLabel": "Create a new Transport",
+                "createOrEditLabel": "Create or edit a Transport",
+                "search": "Search for Transport"
+            },
+            "created": "A new Transport is created with identifier {{ param }}",
+            "updated": "A Transport is updated with identifier {{ param }}",
+            "deleted": "A Transport is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Transport {{ id }}?"
+            },
+            "detail": {
+                "title": "Transport"
+            },
+            "name": "Name",
+            "identNumber": "Ident Number",
+            "fullName": "Full Name",
+            "guid": "Guid",
+            "comment": "Comment",
+            "costKilometer": "Cost Kilometer",
+            "costHoure": "Cost Houre",
+            "costPutIn": "Cost Put In",
+            "minWeight": "Min Weight",
+            "maxWeight": "Max Weight",
+            "minVolume": "Min Volume",
+            "maxVolume": "Max Volume",
+            "capacity": "Capacity",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date",
+            "task": "Task",
+            "company": "Company",
+            "branch": "Branch",
+            "warehouse": "Warehouse",
+            "driver": "Driver",
+            "sensor": "Sensor"
+        }
+    }
+}

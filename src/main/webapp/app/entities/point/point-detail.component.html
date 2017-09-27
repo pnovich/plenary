@@ -1,0 +1,109 @@
+
+<div *ngIf="point">
+    <h2><span jhiTranslate="plenaryErpApp.point.detail.title">Point</span> {{point.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="plenaryErpApp.point.name">Name</span></dt>
+        <dd>
+            <span>{{point.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.point.fullName">Full Name</span></dt>
+        <dd>
+            <span>{{point.fullName}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.point.guid">Guid</span></dt>
+        <dd>
+            <span>{{point.guid}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.point.houseNumber">House Number</span></dt>
+        <dd>
+            <span>{{point.houseNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.point.address">Address</span></dt>
+        <dd>
+            <span>{{point.address}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.point.longitude">Longitude</span></dt>
+        <dd>
+            <span>{{point.longitude}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.point.latitude">Latitude</span></dt>
+        <dd>
+            <span>{{point.latitude}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.point.serviceTime">Service Time</span></dt>
+        <dd>
+            <span>{{point.serviceTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.point.comment">Comment</span></dt>
+        <dd>
+            <span>{{point.comment}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.point.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{point.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.point.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{point.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.point.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{point.lastModifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.point.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{point.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.point.company">Company</span></dt>
+        <dd>
+            <div *ngIf="point.companyId">
+                <a [routerLink]="['/company', point.companyId]">{{point.companyFullName}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.point.branch">Branch</span></dt>
+        <dd>
+            <div *ngIf="point.branchId">
+                <a [routerLink]="['/branch', point.branchId]">{{point.branchFullName}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.point.country">Country</span></dt>
+        <dd>
+            <div *ngIf="point.countryId">
+                <a [routerLink]="['/country', point.countryId]">{{point.countryFullName}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.point.region">Region</span></dt>
+        <dd>
+            <div *ngIf="point.regionId">
+                <a [routerLink]="['/region', point.regionId]">{{point.regionFullName}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.point.settlement">Settlement</span></dt>
+        <dd>
+            <div *ngIf="point.settlementId">
+                <a [routerLink]="['/settlement', point.settlementId]">{{point.settlementFullName}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.point.street">Street</span></dt>
+        <dd>
+            <div *ngIf="point.streetId">
+                <a [routerLink]="['/street', point.streetId]">{{point.streetFullName}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'point/'+ point.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

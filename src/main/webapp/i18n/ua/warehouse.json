@@ -1,0 +1,41 @@
+{
+    "plenaryErpApp": {
+        "warehouse" : {
+            "home": {
+                "title": "Warehouses",
+                "createLabel": "Створити новий Warehouse",
+                "createOrEditLabel": "Створити чи редагувати Warehouse",
+                "search": "Знайти Warehouse"
+            },
+            "created": "Новий Warehouse створений з ідентифікатором {{ param }}",
+            "updated": "Warehouse оновлений з ідентифікатором {{ param }}",
+            "deleted": "Warehouse видалений з ідентифікатором {{ param }}",
+            "delete": {
+                "question": "Ви впевнені, що хочете видалити Warehouse {{ id }}?"
+            },
+            "detail": {
+                "title": "Warehouse"
+            },
+            "name": "Name",
+            "fullName": "Full Name",
+            "guid": "Guid",
+            "longitude": "Longitude",
+            "latitude": "Latitude",
+            "address": "Address",
+            "houseNumber": "House Number",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date",
+            "warehouseAvailable": "Warehouse Available",
+            "transport": "Transport",
+            "task": "Task",
+            "company": "Company",
+            "branch": "Branch",
+            "country": "Country",
+            "region": "Region",
+            "settlement": "Settlement",
+            "street": "Street"
+        }
+    }
+}

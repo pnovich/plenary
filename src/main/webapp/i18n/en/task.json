@@ -1,0 +1,42 @@
+{
+    "plenaryErpApp": {
+        "task" : {
+            "home": {
+                "title": "Tasks",
+                "createLabel": "Create a new Task",
+                "createOrEditLabel": "Create or edit a Task",
+                "search": "Search for Task"
+            },
+            "created": "A new Task is created with identifier {{ param }}",
+            "updated": "A Task is updated with identifier {{ param }}",
+            "deleted": "A Task is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Task {{ id }}?"
+            },
+            "detail": {
+                "title": "Task"
+            },
+            "number": "Number",
+            "date": "Date",
+            "fullName": "Full Name",
+            "invoiceNumber": "Invoice Number",
+            "invoiceDate": "Invoice Date",
+            "weight": "Weight",
+            "volume": "Volume",
+            "dateOfExecution": "Date Of Execution",
+            "comment": "Comment",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date",
+            "taskDetails": "Task Details",
+            "taskAvailable": "Task Available",
+            "company": "Company",
+            "branch": "Branch",
+            "warehouse": "Warehouse",
+            "transport": "Transport",
+            "point": "Point",
+            "status": "Status"
+        }
+    }
+}

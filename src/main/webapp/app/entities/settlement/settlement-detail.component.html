@@ -1,0 +1,55 @@
+
+<div *ngIf="settlement">
+    <h2><span jhiTranslate="plenaryErpApp.settlement.detail.title">Settlement</span> {{settlement.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="plenaryErpApp.settlement.name">Name</span></dt>
+        <dd>
+            <span>{{settlement.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.settlement.fullName">Full Name</span></dt>
+        <dd>
+            <span>{{settlement.fullName}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.settlement.guid">Guid</span></dt>
+        <dd>
+            <span>{{settlement.guid}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.settlement.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{settlement.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.settlement.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{settlement.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.settlement.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{settlement.lastModifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.settlement.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{settlement.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.settlement.region">Region</span></dt>
+        <dd>
+            <div *ngIf="settlement.regionId">
+                <a [routerLink]="['/region', settlement.regionId]">{{settlement.regionFullName}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'settlement/'+ settlement.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

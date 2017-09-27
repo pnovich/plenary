@@ -1,0 +1,133 @@
+<div>
+    <h2>
+        <span jhiTranslate="plenaryErpApp.warehouse.home.title">Warehouses</span>
+        <button class="btn btn-primary float-right jh-create-entity create-warehouse" [routerLink]="['/', { outlets: { popup: ['warehouse-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="plenaryErpApp.warehouse.home.createLabel">
+            Create new Warehouse
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'plenaryErpApp.warehouse.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="warehouses">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="plenaryErpApp.warehouse.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="fullName"><span jhiTranslate="plenaryErpApp.warehouse.fullName">Full Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="guid"><span jhiTranslate="plenaryErpApp.warehouse.guid">Guid</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="longitude"><span jhiTranslate="plenaryErpApp.warehouse.longitude">Longitude</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="latitude"><span jhiTranslate="plenaryErpApp.warehouse.latitude">Latitude</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="address"><span jhiTranslate="plenaryErpApp.warehouse.address">Address</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="houseNumber"><span jhiTranslate="plenaryErpApp.warehouse.houseNumber">House Number</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="plenaryErpApp.warehouse.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="plenaryErpApp.warehouse.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedBy"><span jhiTranslate="plenaryErpApp.warehouse.lastModifiedBy">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedDate"><span jhiTranslate="plenaryErpApp.warehouse.lastModifiedDate">Last Modified Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="companyFullName"><span jhiTranslate="plenaryErpApp.warehouse.company">Company</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="branchFullName"><span jhiTranslate="plenaryErpApp.warehouse.branch">Branch</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="countryFullName"><span jhiTranslate="plenaryErpApp.warehouse.country">Country</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="regionFullName"><span jhiTranslate="plenaryErpApp.warehouse.region">Region</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="settlementFullName"><span jhiTranslate="plenaryErpApp.warehouse.settlement">Settlement</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="streetFullName"><span jhiTranslate="plenaryErpApp.warehouse.street">Street</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let warehouse of warehouses ;trackBy: trackId">
+                <td><a [routerLink]="['../warehouse', warehouse.id ]">{{warehouse.id}}</a></td>
+                <td>{{warehouse.name}}</td>
+                <td>{{warehouse.fullName}}</td>
+                <td>{{warehouse.guid}}</td>
+                <td>{{warehouse.longitude}}</td>
+                <td>{{warehouse.latitude}}</td>
+                <td>{{warehouse.address}}</td>
+                <td>{{warehouse.houseNumber}}</td>
+                <td>{{warehouse.createdBy}}</td>
+                <td>{{warehouse.createdDate | date:'medium'}}</td>
+                <td>{{warehouse.lastModifiedBy}}</td>
+                <td>{{warehouse.lastModifiedDate | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="warehouse.companyId">
+                        <a [routerLink]="['../company', warehouse.companyId  ]" >{{warehouse.companyFullName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="warehouse.branchId">
+                        <a [routerLink]="['../branch', warehouse.branchId  ]" >{{warehouse.branchFullName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="warehouse.countryId">
+                        <a [routerLink]="['../country', warehouse.countryId  ]" >{{warehouse.countryFullName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="warehouse.regionId">
+                        <a [routerLink]="['../region', warehouse.regionId  ]" >{{warehouse.regionFullName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="warehouse.settlementId">
+                        <a [routerLink]="['../settlement', warehouse.settlementId  ]" >{{warehouse.settlementFullName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="warehouse.streetId">
+                        <a [routerLink]="['../street', warehouse.streetId  ]" >{{warehouse.streetFullName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../warehouse', warehouse.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'warehouse/'+ warehouse.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'warehouse/'+ warehouse.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="warehouses && warehouses.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

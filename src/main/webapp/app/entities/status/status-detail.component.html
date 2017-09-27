@@ -1,0 +1,49 @@
+
+<div *ngIf="status">
+    <h2><span jhiTranslate="plenaryErpApp.status.detail.title">Status</span> {{status.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="plenaryErpApp.status.name">Name</span></dt>
+        <dd>
+            <span>{{status.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.status.fullName">Full Name</span></dt>
+        <dd>
+            <span>{{status.fullName}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.status.guid">Guid</span></dt>
+        <dd>
+            <span>{{status.guid}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.status.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{status.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.status.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{status.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.status.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{status.lastModifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.status.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{status.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'status/'+ status.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,32 @@
+{
+    "plenaryErpApp": {
+        "region" : {
+            "home": {
+                "title": "Regions",
+                "createLabel": "Создать новый Region",
+                "createOrEditLabel": "Создать или отредактировать Region",
+                "search": "Найти Region"
+            },
+            "created": "Новый Region создан с идентификатором {{ param }}",
+            "updated": "Region обновлен с идентификатором {{ param }}",
+            "deleted": "Region удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Region {{ id }}?"
+            },
+            "detail": {
+                "title": "Region"
+            },
+            "name": "Name",
+            "fullName": "Full Name",
+            "guid": "Guid",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date",
+            "settlement": "Settlement",
+            "warehouse": "Warehouse",
+            "point": "Point",
+            "country": "Country"
+        }
+    }
+}

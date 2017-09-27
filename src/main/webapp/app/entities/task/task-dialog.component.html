@@ -1,0 +1,168 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myTaskLabel" jhiTranslate="plenaryErpApp.task.home.createOrEditLabel">Create or edit a Task</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!task.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="task.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.task.number" for="field_number">Number</label>
+            <input type="text" class="form-control" name="number" id="field_number"
+                [(ngModel)]="task.number" required />
+            <div [hidden]="!(editForm.controls.number?.dirty && editForm.controls.number?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.number?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.task.date" for="field_date">Date</label>
+            <div class="d-flex">
+                <input id="field_date" type="datetime-local" class="form-control" name="date" [(ngModel)]="task.date"
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.date?.dirty && editForm.controls.date?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.date?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.date?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.task.fullName" for="field_fullName">Full Name</label>
+            <input type="text" class="form-control" name="fullName" id="field_fullName"
+                [(ngModel)]="task.fullName"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.task.invoiceNumber" for="field_invoiceNumber">Invoice Number</label>
+            <input type="text" class="form-control" name="invoiceNumber" id="field_invoiceNumber"
+                [(ngModel)]="task.invoiceNumber"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.task.invoiceDate" for="field_invoiceDate">Invoice Date</label>
+            <div class="d-flex">
+                <input id="field_invoiceDate" type="datetime-local" class="form-control" name="invoiceDate" [(ngModel)]="task.invoiceDate"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.task.weight" for="field_weight">Weight</label>
+            <input type="number" class="form-control" name="weight" id="field_weight"
+                [(ngModel)]="task.weight"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.task.volume" for="field_volume">Volume</label>
+            <input type="number" class="form-control" name="volume" id="field_volume"
+                [(ngModel)]="task.volume"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.task.dateOfExecution" for="field_dateOfExecution">Date Of Execution</label>
+            <div class="d-flex">
+                <input id="field_dateOfExecution" type="datetime-local" class="form-control" name="dateOfExecution" [(ngModel)]="task.dateOfExecution"
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.dateOfExecution?.dirty && editForm.controls.dateOfExecution?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dateOfExecution?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.dateOfExecution?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.task.comment" for="field_comment">Comment</label>
+            <input type="text" class="form-control" name="comment" id="field_comment"
+                [(ngModel)]="task.comment"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.task.createdBy" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="task.createdBy"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.task.createdDate" for="field_createdDate">Created Date</label>
+            <div class="d-flex">
+                <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" [(ngModel)]="task.createdDate"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.task.lastModifiedBy" for="field_lastModifiedBy">Last Modified By</label>
+            <input type="text" class="form-control" name="lastModifiedBy" id="field_lastModifiedBy"
+                [(ngModel)]="task.lastModifiedBy"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.task.lastModifiedDate" for="field_lastModifiedDate">Last Modified Date</label>
+            <div class="d-flex">
+                <input id="field_lastModifiedDate" type="datetime-local" class="form-control" name="lastModifiedDate" [(ngModel)]="task.lastModifiedDate"
+                  />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.task.company" for="field_company">Company</label>
+            <select class="form-control" id="field_company" name="company" [(ngModel)]="task.companyId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="companyOption.id" *ngFor="let companyOption of companies; trackBy: trackCompanyById">{{companyOption.fullName}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.task.branch" for="field_branch">Branch</label>
+            <select class="form-control" id="field_branch" name="branch" [(ngModel)]="task.branchId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="branchOption.id" *ngFor="let branchOption of branches; trackBy: trackBranchById">{{branchOption.fullName}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.task.warehouse" for="field_warehouse">Warehouse</label>
+            <select class="form-control" id="field_warehouse" name="warehouse" [(ngModel)]="task.warehouseId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="warehouseOption.id" *ngFor="let warehouseOption of warehouses; trackBy: trackWarehouseById">{{warehouseOption.fullName}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.task.transport" for="field_transport">Transport</label>
+            <select class="form-control" id="field_transport" name="transport" [(ngModel)]="task.transportId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="transportOption.id" *ngFor="let transportOption of transports; trackBy: trackTransportById">{{transportOption.fullName}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.task.point" for="field_point">Point</label>
+            <select class="form-control" id="field_point" name="point" [(ngModel)]="task.pointId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="pointOption.id" *ngFor="let pointOption of points; trackBy: trackPointById">{{pointOption.fullName}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.task.status" for="field_status">Status</label>
+            <select class="form-control" id="field_status" name="status" [(ngModel)]="task.statusId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="statusOption.id" *ngFor="let statusOption of statuses; trackBy: trackStatusById">{{statusOption.fullName}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

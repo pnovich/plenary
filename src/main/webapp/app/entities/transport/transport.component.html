@@ -1,0 +1,139 @@
+<div>
+    <h2>
+        <span jhiTranslate="plenaryErpApp.transport.home.title">Transports</span>
+        <button class="btn btn-primary float-right jh-create-entity create-transport" [routerLink]="['/', { outlets: { popup: ['transport-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="plenaryErpApp.transport.home.createLabel">
+            Create new Transport
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'plenaryErpApp.transport.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="transports">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="plenaryErpApp.transport.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="identNumber"><span jhiTranslate="plenaryErpApp.transport.identNumber">Ident Number</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="fullName"><span jhiTranslate="plenaryErpApp.transport.fullName">Full Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="guid"><span jhiTranslate="plenaryErpApp.transport.guid">Guid</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="comment"><span jhiTranslate="plenaryErpApp.transport.comment">Comment</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="costKilometer"><span jhiTranslate="plenaryErpApp.transport.costKilometer">Cost Kilometer</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="costHoure"><span jhiTranslate="plenaryErpApp.transport.costHoure">Cost Houre</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="costPutIn"><span jhiTranslate="plenaryErpApp.transport.costPutIn">Cost Put In</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="minWeight"><span jhiTranslate="plenaryErpApp.transport.minWeight">Min Weight</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="maxWeight"><span jhiTranslate="plenaryErpApp.transport.maxWeight">Max Weight</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="minVolume"><span jhiTranslate="plenaryErpApp.transport.minVolume">Min Volume</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="maxVolume"><span jhiTranslate="plenaryErpApp.transport.maxVolume">Max Volume</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="capacity"><span jhiTranslate="plenaryErpApp.transport.capacity">Capacity</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="plenaryErpApp.transport.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="plenaryErpApp.transport.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedBy"><span jhiTranslate="plenaryErpApp.transport.lastModifiedBy">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedDate"><span jhiTranslate="plenaryErpApp.transport.lastModifiedDate">Last Modified Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="companyFullName"><span jhiTranslate="plenaryErpApp.transport.company">Company</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="branchFullName"><span jhiTranslate="plenaryErpApp.transport.branch">Branch</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="warehouseFullName"><span jhiTranslate="plenaryErpApp.transport.warehouse">Warehouse</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="driverFullName"><span jhiTranslate="plenaryErpApp.transport.driver">Driver</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sensorFullName"><span jhiTranslate="plenaryErpApp.transport.sensor">Sensor</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let transport of transports ;trackBy: trackId">
+                <td><a [routerLink]="['../transport', transport.id ]">{{transport.id}}</a></td>
+                <td>{{transport.name}}</td>
+                <td>{{transport.identNumber}}</td>
+                <td>{{transport.fullName}}</td>
+                <td>{{transport.guid}}</td>
+                <td>{{transport.comment}}</td>
+                <td>{{transport.costKilometer}}</td>
+                <td>{{transport.costHoure}}</td>
+                <td>{{transport.costPutIn}}</td>
+                <td>{{transport.minWeight}}</td>
+                <td>{{transport.maxWeight}}</td>
+                <td>{{transport.minVolume}}</td>
+                <td>{{transport.maxVolume}}</td>
+                <td>{{transport.capacity}}</td>
+                <td>{{transport.createdBy}}</td>
+                <td>{{transport.createdDate | date:'medium'}}</td>
+                <td>{{transport.lastModifiedBy}}</td>
+                <td>{{transport.lastModifiedDate | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="transport.companyId">
+                        <a [routerLink]="['../company', transport.companyId  ]" >{{transport.companyFullName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="transport.branchId">
+                        <a [routerLink]="['../branch', transport.branchId  ]" >{{transport.branchFullName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="transport.warehouseId">
+                        <a [routerLink]="['../warehouse', transport.warehouseId  ]" >{{transport.warehouseFullName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="transport.driverId">
+                        <a [routerLink]="['../driver', transport.driverId  ]" >{{transport.driverFullName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="transport.sensorId">
+                        <a [routerLink]="['../sensor', transport.sensorId  ]" >{{transport.sensorFullName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../transport', transport.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'transport/'+ transport.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'transport/'+ transport.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="transports && transports.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

@@ -1,0 +1,137 @@
+<div>
+    <h2>
+        <span jhiTranslate="plenaryErpApp.point.home.title">Points</span>
+        <button class="btn btn-primary float-right jh-create-entity create-point" [routerLink]="['/', { outlets: { popup: ['point-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="plenaryErpApp.point.home.createLabel">
+            Create new Point
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'plenaryErpApp.point.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="points">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="plenaryErpApp.point.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="fullName"><span jhiTranslate="plenaryErpApp.point.fullName">Full Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="guid"><span jhiTranslate="plenaryErpApp.point.guid">Guid</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="houseNumber"><span jhiTranslate="plenaryErpApp.point.houseNumber">House Number</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="address"><span jhiTranslate="plenaryErpApp.point.address">Address</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="longitude"><span jhiTranslate="plenaryErpApp.point.longitude">Longitude</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="latitude"><span jhiTranslate="plenaryErpApp.point.latitude">Latitude</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="serviceTime"><span jhiTranslate="plenaryErpApp.point.serviceTime">Service Time</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="comment"><span jhiTranslate="plenaryErpApp.point.comment">Comment</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="plenaryErpApp.point.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="plenaryErpApp.point.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedBy"><span jhiTranslate="plenaryErpApp.point.lastModifiedBy">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedDate"><span jhiTranslate="plenaryErpApp.point.lastModifiedDate">Last Modified Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="companyFullName"><span jhiTranslate="plenaryErpApp.point.company">Company</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="branchFullName"><span jhiTranslate="plenaryErpApp.point.branch">Branch</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="countryFullName"><span jhiTranslate="plenaryErpApp.point.country">Country</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="regionFullName"><span jhiTranslate="plenaryErpApp.point.region">Region</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="settlementFullName"><span jhiTranslate="plenaryErpApp.point.settlement">Settlement</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="streetFullName"><span jhiTranslate="plenaryErpApp.point.street">Street</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let point of points ;trackBy: trackId">
+                <td><a [routerLink]="['../point', point.id ]">{{point.id}}</a></td>
+                <td>{{point.name}}</td>
+                <td>{{point.fullName}}</td>
+                <td>{{point.guid}}</td>
+                <td>{{point.houseNumber}}</td>
+                <td>{{point.address}}</td>
+                <td>{{point.longitude}}</td>
+                <td>{{point.latitude}}</td>
+                <td>{{point.serviceTime}}</td>
+                <td>{{point.comment}}</td>
+                <td>{{point.createdBy}}</td>
+                <td>{{point.createdDate | date:'medium'}}</td>
+                <td>{{point.lastModifiedBy}}</td>
+                <td>{{point.lastModifiedDate | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="point.companyId">
+                        <a [routerLink]="['../company', point.companyId  ]" >{{point.companyFullName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="point.branchId">
+                        <a [routerLink]="['../branch', point.branchId  ]" >{{point.branchFullName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="point.countryId">
+                        <a [routerLink]="['../country', point.countryId  ]" >{{point.countryFullName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="point.regionId">
+                        <a [routerLink]="['../region', point.regionId  ]" >{{point.regionFullName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="point.settlementId">
+                        <a [routerLink]="['../settlement', point.settlementId  ]" >{{point.settlementFullName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="point.streetId">
+                        <a [routerLink]="['../street', point.streetId  ]" >{{point.streetFullName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../point', point.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'point/'+ point.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'point/'+ point.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="points && points.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

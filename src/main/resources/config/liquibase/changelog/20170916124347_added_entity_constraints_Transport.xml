@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Transport.
+    -->
+    <changeSet id="20170916124347-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="company_id"
+                                 baseTableName="transport"
+                                 constraintName="fk_transport_company_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="company"/>
+
+        <addForeignKeyConstraint baseColumnNames="branch_id"
+                                 baseTableName="transport"
+                                 constraintName="fk_transport_branch_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="branch"/>
+
+        <addForeignKeyConstraint baseColumnNames="warehouse_id"
+                                 baseTableName="transport"
+                                 constraintName="fk_transport_warehouse_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="warehouse"/>
+
+        <addForeignKeyConstraint baseColumnNames="driver_id"
+                                 baseTableName="transport"
+                                 constraintName="fk_transport_driver_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="driver"/>
+
+        <addForeignKeyConstraint baseColumnNames="sensor_id"
+                                 baseTableName="transport"
+                                 constraintName="fk_transport_sensor_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sensor"/>
+
+    </changeSet>
+</databaseChangeLog>

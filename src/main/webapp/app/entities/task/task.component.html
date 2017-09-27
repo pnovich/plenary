@@ -1,0 +1,137 @@
+<div>
+    <h2>
+        <span jhiTranslate="plenaryErpApp.task.home.title">Tasks</span>
+        <button class="btn btn-primary float-right jh-create-entity create-task" [routerLink]="['/', { outlets: { popup: ['task-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="plenaryErpApp.task.home.createLabel">
+            Create new Task
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'plenaryErpApp.task.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="tasks">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="number"><span jhiTranslate="plenaryErpApp.task.number">Number</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="date"><span jhiTranslate="plenaryErpApp.task.date">Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="fullName"><span jhiTranslate="plenaryErpApp.task.fullName">Full Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="invoiceNumber"><span jhiTranslate="plenaryErpApp.task.invoiceNumber">Invoice Number</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="invoiceDate"><span jhiTranslate="plenaryErpApp.task.invoiceDate">Invoice Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="weight"><span jhiTranslate="plenaryErpApp.task.weight">Weight</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="volume"><span jhiTranslate="plenaryErpApp.task.volume">Volume</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateOfExecution"><span jhiTranslate="plenaryErpApp.task.dateOfExecution">Date Of Execution</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="comment"><span jhiTranslate="plenaryErpApp.task.comment">Comment</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="plenaryErpApp.task.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="plenaryErpApp.task.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedBy"><span jhiTranslate="plenaryErpApp.task.lastModifiedBy">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedDate"><span jhiTranslate="plenaryErpApp.task.lastModifiedDate">Last Modified Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="companyFullName"><span jhiTranslate="plenaryErpApp.task.company">Company</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="branchFullName"><span jhiTranslate="plenaryErpApp.task.branch">Branch</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="warehouseFullName"><span jhiTranslate="plenaryErpApp.task.warehouse">Warehouse</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="transportFullName"><span jhiTranslate="plenaryErpApp.task.transport">Transport</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="pointFullName"><span jhiTranslate="plenaryErpApp.task.point">Point</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="statusFullName"><span jhiTranslate="plenaryErpApp.task.status">Status</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let task of tasks ;trackBy: trackId">
+                <td><a [routerLink]="['../task', task.id ]">{{task.id}}</a></td>
+                <td>{{task.number}}</td>
+                <td>{{task.date | date:'medium'}}</td>
+                <td>{{task.fullName}}</td>
+                <td>{{task.invoiceNumber}}</td>
+                <td>{{task.invoiceDate | date:'medium'}}</td>
+                <td>{{task.weight}}</td>
+                <td>{{task.volume}}</td>
+                <td>{{task.dateOfExecution | date:'medium'}}</td>
+                <td>{{task.comment}}</td>
+                <td>{{task.createdBy}}</td>
+                <td>{{task.createdDate | date:'medium'}}</td>
+                <td>{{task.lastModifiedBy}}</td>
+                <td>{{task.lastModifiedDate | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="task.companyId">
+                        <a [routerLink]="['../company', task.companyId  ]" >{{task.companyFullName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="task.branchId">
+                        <a [routerLink]="['../branch', task.branchId  ]" >{{task.branchFullName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="task.warehouseId">
+                        <a [routerLink]="['../warehouse', task.warehouseId  ]" >{{task.warehouseFullName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="task.transportId">
+                        <a [routerLink]="['../transport', task.transportId  ]" >{{task.transportFullName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="task.pointId">
+                        <a [routerLink]="['../point', task.pointId  ]" >{{task.pointFullName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="task.statusId">
+                        <a [routerLink]="['../status', task.statusId  ]" >{{task.statusFullName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../task', task.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'task/'+ task.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'task/'+ task.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="tasks && tasks.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

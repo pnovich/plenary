@@ -1,0 +1,49 @@
+
+<div *ngIf="country">
+    <h2><span jhiTranslate="plenaryErpApp.country.detail.title">Country</span> {{country.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="plenaryErpApp.country.name">Name</span></dt>
+        <dd>
+            <span>{{country.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.country.fullName">Full Name</span></dt>
+        <dd>
+            <span>{{country.fullName}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.country.guid">Guid</span></dt>
+        <dd>
+            <span>{{country.guid}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.country.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{country.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.country.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{country.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.country.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{country.lastModifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.country.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{country.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'country/'+ country.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

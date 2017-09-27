@@ -1,0 +1,119 @@
+
+<div *ngIf="transport">
+    <h2><span jhiTranslate="plenaryErpApp.transport.detail.title">Transport</span> {{transport.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="plenaryErpApp.transport.name">Name</span></dt>
+        <dd>
+            <span>{{transport.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.transport.identNumber">Ident Number</span></dt>
+        <dd>
+            <span>{{transport.identNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.transport.fullName">Full Name</span></dt>
+        <dd>
+            <span>{{transport.fullName}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.transport.guid">Guid</span></dt>
+        <dd>
+            <span>{{transport.guid}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.transport.comment">Comment</span></dt>
+        <dd>
+            <span>{{transport.comment}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.transport.costKilometer">Cost Kilometer</span></dt>
+        <dd>
+            <span>{{transport.costKilometer}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.transport.costHoure">Cost Houre</span></dt>
+        <dd>
+            <span>{{transport.costHoure}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.transport.costPutIn">Cost Put In</span></dt>
+        <dd>
+            <span>{{transport.costPutIn}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.transport.minWeight">Min Weight</span></dt>
+        <dd>
+            <span>{{transport.minWeight}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.transport.maxWeight">Max Weight</span></dt>
+        <dd>
+            <span>{{transport.maxWeight}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.transport.minVolume">Min Volume</span></dt>
+        <dd>
+            <span>{{transport.minVolume}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.transport.maxVolume">Max Volume</span></dt>
+        <dd>
+            <span>{{transport.maxVolume}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.transport.capacity">Capacity</span></dt>
+        <dd>
+            <span>{{transport.capacity}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.transport.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{transport.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.transport.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{transport.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.transport.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{transport.lastModifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.transport.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{transport.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.transport.company">Company</span></dt>
+        <dd>
+            <div *ngIf="transport.companyId">
+                <a [routerLink]="['/company', transport.companyId]">{{transport.companyFullName}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.transport.branch">Branch</span></dt>
+        <dd>
+            <div *ngIf="transport.branchId">
+                <a [routerLink]="['/branch', transport.branchId]">{{transport.branchFullName}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.transport.warehouse">Warehouse</span></dt>
+        <dd>
+            <div *ngIf="transport.warehouseId">
+                <a [routerLink]="['/warehouse', transport.warehouseId]">{{transport.warehouseFullName}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.transport.driver">Driver</span></dt>
+        <dd>
+            <div *ngIf="transport.driverId">
+                <a [routerLink]="['/driver', transport.driverId]">{{transport.driverFullName}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.transport.sensor">Sensor</span></dt>
+        <dd>
+            <div *ngIf="transport.sensorId">
+                <a [routerLink]="['/sensor', transport.sensorId]">{{transport.sensorFullName}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'transport/'+ transport.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

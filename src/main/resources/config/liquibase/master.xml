@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124332_added_entity_Company.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124333_added_entity_Branch.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124334_added_entity_Country.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124335_added_entity_Region.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124336_added_entity_Settlement.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124337_added_entity_Street.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124338_added_entity_Status.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124339_added_entity_Warehouse.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124340_added_entity_WarehouseAvailable.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124341_added_entity_Point.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124342_added_entity_PointsCoordinate.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124343_added_entity_PointsAvailable.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124344_added_entity_PointsContact.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124345_added_entity_Driver.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124346_added_entity_Sensor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124347_added_entity_Transport.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124348_added_entity_Task.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124349_added_entity_TaskDetails.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124350_added_entity_TaskAvailable.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20170916124333_added_entity_constraints_Branch.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124335_added_entity_constraints_Region.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124336_added_entity_constraints_Settlement.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124337_added_entity_constraints_Street.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124339_added_entity_constraints_Warehouse.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124340_added_entity_constraints_WarehouseAvailable.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124341_added_entity_constraints_Point.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124342_added_entity_constraints_PointsCoordinate.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124343_added_entity_constraints_PointsAvailable.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124344_added_entity_constraints_PointsContact.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124345_added_entity_constraints_Driver.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124346_added_entity_constraints_Sensor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124347_added_entity_constraints_Transport.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124348_added_entity_constraints_Task.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124349_added_entity_constraints_TaskDetails.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170916124350_added_entity_constraints_TaskAvailable.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+</databaseChangeLog>

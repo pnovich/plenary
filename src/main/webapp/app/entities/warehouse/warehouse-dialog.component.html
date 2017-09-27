@@ -1,0 +1,138 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myWarehouseLabel" jhiTranslate="plenaryErpApp.warehouse.home.createOrEditLabel">Create or edit a Warehouse</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!warehouse.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="warehouse.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.warehouse.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="warehouse.name" required />
+            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.warehouse.fullName" for="field_fullName">Full Name</label>
+            <input type="text" class="form-control" name="fullName" id="field_fullName"
+                [(ngModel)]="warehouse.fullName"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.warehouse.guid" for="field_guid">Guid</label>
+            <input type="text" class="form-control" name="guid" id="field_guid"
+                [(ngModel)]="warehouse.guid"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.warehouse.longitude" for="field_longitude">Longitude</label>
+            <input type="number" class="form-control" name="longitude" id="field_longitude"
+                [(ngModel)]="warehouse.longitude"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.warehouse.latitude" for="field_latitude">Latitude</label>
+            <input type="number" class="form-control" name="latitude" id="field_latitude"
+                [(ngModel)]="warehouse.latitude"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.warehouse.address" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                [(ngModel)]="warehouse.address" required />
+            <div [hidden]="!(editForm.controls.address?.dirty && editForm.controls.address?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.address?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.warehouse.houseNumber" for="field_houseNumber">House Number</label>
+            <input type="text" class="form-control" name="houseNumber" id="field_houseNumber"
+                [(ngModel)]="warehouse.houseNumber"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.warehouse.createdBy" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="warehouse.createdBy"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.warehouse.createdDate" for="field_createdDate">Created Date</label>
+            <div class="d-flex">
+                <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" [(ngModel)]="warehouse.createdDate"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.warehouse.lastModifiedBy" for="field_lastModifiedBy">Last Modified By</label>
+            <input type="text" class="form-control" name="lastModifiedBy" id="field_lastModifiedBy"
+                [(ngModel)]="warehouse.lastModifiedBy"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.warehouse.lastModifiedDate" for="field_lastModifiedDate">Last Modified Date</label>
+            <div class="d-flex">
+                <input id="field_lastModifiedDate" type="datetime-local" class="form-control" name="lastModifiedDate" [(ngModel)]="warehouse.lastModifiedDate"
+                  />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.warehouse.company" for="field_company">Company</label>
+            <select class="form-control" id="field_company" name="company" [(ngModel)]="warehouse.companyId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="companyOption.id" *ngFor="let companyOption of companies; trackBy: trackCompanyById">{{companyOption.fullName}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.warehouse.branch" for="field_branch">Branch</label>
+            <select class="form-control" id="field_branch" name="branch" [(ngModel)]="warehouse.branchId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="branchOption.id" *ngFor="let branchOption of branches; trackBy: trackBranchById">{{branchOption.fullName}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.warehouse.country" for="field_country">Country</label>
+            <select class="form-control" id="field_country" name="country" [(ngModel)]="warehouse.countryId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="countryOption.id" *ngFor="let countryOption of countries; trackBy: trackCountryById">{{countryOption.fullName}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.warehouse.region" for="field_region">Region</label>
+            <select class="form-control" id="field_region" name="region" [(ngModel)]="warehouse.regionId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="regionOption.id" *ngFor="let regionOption of regions; trackBy: trackRegionById">{{regionOption.fullName}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.warehouse.settlement" for="field_settlement">Settlement</label>
+            <select class="form-control" id="field_settlement" name="settlement" [(ngModel)]="warehouse.settlementId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="settlementOption.id" *ngFor="let settlementOption of settlements; trackBy: trackSettlementById">{{settlementOption.fullName}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plenaryErpApp.warehouse.street" for="field_street">Street</label>
+            <select class="form-control" id="field_street" name="street" [(ngModel)]="warehouse.streetId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="streetOption.id" *ngFor="let streetOption of streets; trackBy: trackStreetById">{{streetOption.fullName}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

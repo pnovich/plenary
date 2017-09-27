@@ -1,0 +1,29 @@
+{
+    "plenaryErpApp": {
+        "status" : {
+            "home": {
+                "title": "Statuses",
+                "createLabel": "Создать новый Status",
+                "createOrEditLabel": "Создать или отредактировать Status",
+                "search": "Найти Status"
+            },
+            "created": "Новый Status создан с идентификатором {{ param }}",
+            "updated": "Status обновлен с идентификатором {{ param }}",
+            "deleted": "Status удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Status {{ id }}?"
+            },
+            "detail": {
+                "title": "Status"
+            },
+            "name": "Name",
+            "fullName": "Full Name",
+            "guid": "Guid",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date",
+            "task": "Task"
+        }
+    }
+}

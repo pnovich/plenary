@@ -1,0 +1,31 @@
+{
+    "plenaryErpApp": {
+        "street" : {
+            "home": {
+                "title": "Streets",
+                "createLabel": "Створити новий Street",
+                "createOrEditLabel": "Створити чи редагувати Street",
+                "search": "Знайти Street"
+            },
+            "created": "Новий Street створений з ідентифікатором {{ param }}",
+            "updated": "Street оновлений з ідентифікатором {{ param }}",
+            "deleted": "Street видалений з ідентифікатором {{ param }}",
+            "delete": {
+                "question": "Ви впевнені, що хочете видалити Street {{ id }}?"
+            },
+            "detail": {
+                "title": "Street"
+            },
+            "name": "Name",
+            "fullName": "Full Name",
+            "guid": "Guid",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date",
+            "warehouse": "Warehouse",
+            "point": "Point",
+            "settlement": "Settlement"
+        }
+    }
+}

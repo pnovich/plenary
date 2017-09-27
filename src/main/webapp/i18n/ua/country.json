@@ -1,0 +1,31 @@
+{
+    "plenaryErpApp": {
+        "country" : {
+            "home": {
+                "title": "Countries",
+                "createLabel": "Створити новий Country",
+                "createOrEditLabel": "Створити чи редагувати Country",
+                "search": "Знайти Country"
+            },
+            "created": "Новий Country створений з ідентифікатором {{ param }}",
+            "updated": "Country оновлений з ідентифікатором {{ param }}",
+            "deleted": "Country видалений з ідентифікатором {{ param }}",
+            "delete": {
+                "question": "Ви впевнені, що хочете видалити Country {{ id }}?"
+            },
+            "detail": {
+                "title": "Country"
+            },
+            "name": "Name",
+            "fullName": "Full Name",
+            "guid": "Guid",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date",
+            "region": "Region",
+            "warehouse": "Warehouse",
+            "point": "Point"
+        }
+    }
+}

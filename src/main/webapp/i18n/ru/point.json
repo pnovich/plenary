@@ -1,0 +1,44 @@
+{
+    "plenaryErpApp": {
+        "point" : {
+            "home": {
+                "title": "Points",
+                "createLabel": "Создать новый Point",
+                "createOrEditLabel": "Создать или отредактировать Point",
+                "search": "Найти Point"
+            },
+            "created": "Новый Point создан с идентификатором {{ param }}",
+            "updated": "Point обновлен с идентификатором {{ param }}",
+            "deleted": "Point удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Point {{ id }}?"
+            },
+            "detail": {
+                "title": "Point"
+            },
+            "name": "Name",
+            "fullName": "Full Name",
+            "guid": "Guid",
+            "houseNumber": "House Number",
+            "address": "Address",
+            "longitude": "Longitude",
+            "latitude": "Latitude",
+            "serviceTime": "Service Time",
+            "comment": "Comment",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date",
+            "pointsCoordinate": "Points Coordinate",
+            "pointsAvailable": "Points Available",
+            "pointsContact": "Points Contact",
+            "task": "Task",
+            "company": "Company",
+            "branch": "Branch",
+            "country": "Country",
+            "region": "Region",
+            "settlement": "Settlement",
+            "street": "Street"
+        }
+    }
+}

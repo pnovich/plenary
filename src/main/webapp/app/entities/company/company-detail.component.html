@@ -1,0 +1,57 @@
+
+<div *ngIf="company">
+    <h2><span jhiTranslate="plenaryErpApp.company.detail.title">Company</span> {{company.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="plenaryErpApp.company.name">Name</span></dt>
+        <dd>
+            <span>{{company.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.company.fullName">Full Name</span></dt>
+        <dd>
+            <span>{{company.fullName}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.company.email">Email</span></dt>
+        <dd>
+            <span>{{company.email}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.company.phone">Phone</span></dt>
+        <dd>
+            <span>{{company.phone}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.company.address">Address</span></dt>
+        <dd>
+            <span>{{company.address}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.company.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{company.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.company.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{company.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.company.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{company.lastModifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.company.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{company.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'company/'+ company.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

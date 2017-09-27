@@ -1,0 +1,65 @@
+
+<div *ngIf="sensor">
+    <h2><span jhiTranslate="plenaryErpApp.sensor.detail.title">Sensor</span> {{sensor.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="plenaryErpApp.sensor.name">Name</span></dt>
+        <dd>
+            <span>{{sensor.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.sensor.fullName">Full Name</span></dt>
+        <dd>
+            <span>{{sensor.fullName}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.sensor.imei">Imei</span></dt>
+        <dd>
+            <span>{{sensor.imei}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.sensor.guid">Guid</span></dt>
+        <dd>
+            <span>{{sensor.guid}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.sensor.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{sensor.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.sensor.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{sensor.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.sensor.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{sensor.lastModifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.sensor.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{sensor.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.sensor.company">Company</span></dt>
+        <dd>
+            <div *ngIf="sensor.companyId">
+                <a [routerLink]="['/company', sensor.companyId]">{{sensor.companyFullName}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.sensor.branch">Branch</span></dt>
+        <dd>
+            <div *ngIf="sensor.branchId">
+                <a [routerLink]="['/branch', sensor.branchId]">{{sensor.branchFullName}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'sensor/'+ sensor.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

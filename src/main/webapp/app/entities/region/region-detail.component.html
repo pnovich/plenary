@@ -1,0 +1,55 @@
+
+<div *ngIf="region">
+    <h2><span jhiTranslate="plenaryErpApp.region.detail.title">Region</span> {{region.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="plenaryErpApp.region.name">Name</span></dt>
+        <dd>
+            <span>{{region.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.region.fullName">Full Name</span></dt>
+        <dd>
+            <span>{{region.fullName}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.region.guid">Guid</span></dt>
+        <dd>
+            <span>{{region.guid}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.region.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{region.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.region.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{region.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.region.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{region.lastModifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.region.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{region.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.region.country">Country</span></dt>
+        <dd>
+            <div *ngIf="region.countryId">
+                <a [routerLink]="['/country', region.countryId]">{{region.countryFullName}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'region/'+ region.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

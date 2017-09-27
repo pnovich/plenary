@@ -1,0 +1,109 @@
+
+<div *ngIf="task">
+    <h2><span jhiTranslate="plenaryErpApp.task.detail.title">Task</span> {{task.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="plenaryErpApp.task.number">Number</span></dt>
+        <dd>
+            <span>{{task.number}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.task.date">Date</span></dt>
+        <dd>
+            <span>{{task.date | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.task.fullName">Full Name</span></dt>
+        <dd>
+            <span>{{task.fullName}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.task.invoiceNumber">Invoice Number</span></dt>
+        <dd>
+            <span>{{task.invoiceNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.task.invoiceDate">Invoice Date</span></dt>
+        <dd>
+            <span>{{task.invoiceDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.task.weight">Weight</span></dt>
+        <dd>
+            <span>{{task.weight}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.task.volume">Volume</span></dt>
+        <dd>
+            <span>{{task.volume}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.task.dateOfExecution">Date Of Execution</span></dt>
+        <dd>
+            <span>{{task.dateOfExecution | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.task.comment">Comment</span></dt>
+        <dd>
+            <span>{{task.comment}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.task.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{task.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.task.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{task.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.task.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{task.lastModifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.task.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{task.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.task.company">Company</span></dt>
+        <dd>
+            <div *ngIf="task.companyId">
+                <a [routerLink]="['/company', task.companyId]">{{task.companyFullName}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.task.branch">Branch</span></dt>
+        <dd>
+            <div *ngIf="task.branchId">
+                <a [routerLink]="['/branch', task.branchId]">{{task.branchFullName}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.task.warehouse">Warehouse</span></dt>
+        <dd>
+            <div *ngIf="task.warehouseId">
+                <a [routerLink]="['/warehouse', task.warehouseId]">{{task.warehouseFullName}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.task.transport">Transport</span></dt>
+        <dd>
+            <div *ngIf="task.transportId">
+                <a [routerLink]="['/transport', task.transportId]">{{task.transportFullName}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.task.point">Point</span></dt>
+        <dd>
+            <div *ngIf="task.pointId">
+                <a [routerLink]="['/point', task.pointId]">{{task.pointFullName}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plenaryErpApp.task.status">Status</span></dt>
+        <dd>
+            <div *ngIf="task.statusId">
+                <a [routerLink]="['/status', task.statusId]">{{task.statusFullName}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'task/'+ task.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
